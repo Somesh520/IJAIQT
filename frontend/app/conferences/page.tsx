@@ -40,7 +40,7 @@ export default function ConferencesPage() {
                 <div className="flex items-center text-[17px] font-bold">
                   <span className="text-[#f97316] mr-2">Download Conference Proceeding</span>
                   <a
-                    href={`http://localhost:5001${conf.pdfUrl}`}
+                    href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${conf.pdfUrl}`}
                     target="_blank"
                     rel="noreferrer"
                     className="text-[#008cba] underline underline-offset-2 decoration-1 hover:text-[#006b8f] transition-colors"

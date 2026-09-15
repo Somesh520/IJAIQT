@@ -81,7 +81,7 @@ export default function HomePage() {
                   s.indexingImages.map((img: string, idx: number) => (
                     <div key={idx} className="bg-white p-3 w-[85%] flex justify-center shadow-sm">
                       <img 
-                        src={img.startsWith('http') ? img : `http://localhost:5001${img}`} 
+                        src={img.startsWith('http') ? img : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${img}`} 
                         alt={`Indexing logo ${idx + 1}`} 
                         className="max-w-full h-auto object-contain"
                       />
@@ -226,7 +226,7 @@ export default function HomePage() {
           {/* Vertical Side Banner */}
           {s.sideBannerUrl ? (
             <img 
-              src={s.sideBannerUrl.startsWith('http') ? s.sideBannerUrl : `http://localhost:5001${s.sideBannerUrl}`} 
+              src={s.sideBannerUrl.startsWith('http') ? s.sideBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${s.sideBannerUrl}`} 
               alt="Sidebar Banner" 
               className="w-full max-w-[280px] h-auto object-contain border border-gray-200 shadow-sm rounded mx-auto mt-2"
             />
