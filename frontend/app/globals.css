@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+  }
+
+  body {
+    @apply antialiased bg-slate-50 text-slate-800;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative text-slate-600 font-bold font-sans px-2 py-2 transition-colors duration-200 hover:text-brand-700;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-full h-[2px] bg-brand-700 origin-left scale-x-0 transition-transform duration-300 ease-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+  
+  /* Current active/highlight style */
+  .nav-link.active {
+    @apply text-brand-900;
+  }
+  .nav-link.active::after {
+    @apply scale-x-100;
+  }
+
+  .content-container {
+    @apply max-w-5xl mx-auto px-4 py-8;
+  }
+  
+  .table-header {
+    @apply bg-slate-100 text-slate-800 font-semibold p-3 text-left border-b border-slate-200;
+  }
+  
+  .table-cell {
+    @apply p-3 border-b border-slate-100;
+  }
+}
+
+/* Hide Navbar and Footer on 404 page */
+body.hide-nav-footer #global-navbar,
+body.hide-nav-footer #global-footer {
+  display: none !important;
+}
+
