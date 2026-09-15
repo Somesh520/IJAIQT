@@ -45,64 +45,73 @@ export default function Navbar() {
     { name: 'Authors', path: '/authors' },
     { name: 'Current Issue', path: '/current-issue' },
     { name: 'Archive', path: '/archive' },
-
     { name: 'Topics Covered', path: '/topics' },
     { name: 'FAQs', path: '/faq' },
   ]
 
-  return (
-    <header className="w-full bg-white flex flex-col items-center border-b shadow-sm pb-4">
-      <div className="w-full max-w-6xl mx-auto flex flex-col">
-        {/* Banner Image */}
-        {bannerUrl ? (
-          <div className="w-full flex justify-center mb-1">
-            <img 
-              src={bannerUrl.startsWith('http') ? bannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${bannerUrl}`} 
-              alt="Site Banner" 
-              className="object-cover border border-gray-300 shadow-sm"
-              style={{ width: '1017px', height: '179px' }}
-            />
-          </div>
-        ) : (
-          <div className="w-full h-32 bg-gray-100 flex items-center justify-center text-gray-500 mb-1 border border-gray-300">
-            No banner uploaded. Admin can change this in Settings.
-          </div>
-        )}
+  const resolveUrl = (url: string) => {
+    if (!url) return ''
+    if (url.startsWith('http')) return url
+    const base = process.env.NEXT_PUBLIC_API_URL
+      ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '')
+      : 'https://ijaiqt.onrender.com'
+    return `${base}${url}`
+  }
 
-        {/* Navbar */}
-        <nav 
-          className="w-full border-t border-b border-gray-400"
-          style={{ backgroundColor: themeColor }}
-        >
-          <ul className="flex flex-wrap w-full">
-            {navLinks.map((link, index) => {
-              const isActive = pathname === link.path
-              return (
-                <li 
-                  key={link.path}
-                  className="flex-grow text-center border-r border-gray-300/30 last:border-r-0 transition-colors"
-                  style={{
-                    backgroundColor: isActive ? '#ff9900' : 'transparent'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) e.currentTarget.style.backgroundColor = 'transparent'
-                  }}
+  return (
+    <header className="w-full bg-white flex flex-col">
+      {/* Banner Image — flush to edges */}
+      {bannerUrl ? (
+        <div className="w-full overflow-hidden" style={{ height: '120px' }}>
+          <img
+            src={resolveUrl(bannerUrl)}
+            alt="Site Banner"
+            className="w-full h-full object-cover object-center"
+            onError={(e) => {
+              const parent = e.currentTarget.parentElement
+              if (parent) {
+                parent.style.backgroundColor = '#f1f5f9'
+                parent.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#94a3b8;font-size:14px;">Banner Image</div>'
+              }
+            }}
+          />
+        </div>
+      ) : (
+        <div className="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+          No banner uploaded — Admin can set this in Dashboard → Settings.
+        </div>
+      )}
+
+      {/* Navigation Bar */}
+      <nav style={{ backgroundColor: themeColor }}>
+        <ul className="flex w-full">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.path
+            return (
+              <li
+                key={link.path}
+                className="flex-grow text-center border-r border-white/20 last:border-r-0 transition-colors"
+                style={{
+                  backgroundColor: isActive ? '#ff9900' : 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.backgroundColor = 'transparent'
+                }}
+              >
+                <Link
+                  href={link.path}
+                  className="block w-full h-full py-2 px-2 text-white font-bold text-[13px] whitespace-nowrap"
                 >
-                  <Link 
-                    href={link.path} 
-                    className="block w-full h-full py-2 px-3 text-white font-bold text-sm sm:text-base whitespace-nowrap"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </nav>
-      </div>
+                  {link.name}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
     </header>
   )
 }

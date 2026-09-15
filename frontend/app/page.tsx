@@ -39,202 +39,199 @@ export default function HomePage() {
   }
 
   const s = settings || {}
-  const themeColor = s.themeColor || '#00008b' // default to blue as requested
-  const secondaryColor = '#e67e22' // Standard orange for contrast, typical in these journals
+  const themeColor = s.themeColor || '#00008b'
+  const orangeColor = '#e67e22'
+
+  const resolveUrl = (url: string) => {
+    if (!url) return ''
+    if (url.startsWith('http')) return url
+    const base = process.env.NEXT_PUBLIC_API_URL
+      ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '')
+      : 'https://ijaiqt.onrender.com'
+    return `${base}${url}`
+  }
 
   return (
-    <main className="w-full bg-white font-sans min-h-screen">
-      <div className="max-w-7xl mx-auto px-2 lg:px-4 py-6 flex flex-col lg:flex-row border-x border-b border-green-600/40 min-h-screen">
-        
-        {/* Left Sidebar: Indexing Box */}
-        <aside className="lg:w-[25%] w-full p-4 lg:border-r border-green-600/40 mb-6 lg:mb-0">
-          <div className="rounded-md p-[6px] flex flex-col gap-[6px]" style={{ backgroundColor: themeColor }}>
-            <div className="font-bold text-white text-[16px] underline">
-              Indexing & Citation:
-            </div>
-            <style>{`
-              @keyframes marqueeUp {
-                0% { transform: translateY(350px); }
-                100% { transform: translateY(-100%); }
-              }
-              .marquee-vertical {
-                animation: marqueeUp 15s linear infinite;
-              }
-              .marquee-vertical:hover {
-                animation-play-state: paused;
-              }
-              
-              @keyframes marqueeUpCfp {
-                0% { transform: translateY(200px); }
-                100% { transform: translateY(-100%); }
-              }
-              .marquee-vertical-cfp {
-                animation: marqueeUpCfp 10s linear infinite;
-              }
-              .marquee-vertical-cfp:hover {
-                animation-play-state: paused;
-              }
-            `}</style>
-            <div className="bg-[#f39c12] w-full h-[350px] overflow-hidden relative flex justify-center shadow-inner">
-              <div className="marquee-vertical w-full flex flex-col items-center gap-4 py-3 absolute">
-                {s.indexingImages && s.indexingImages.length > 0 ? (
-                  s.indexingImages.map((img: string, idx: number) => (
-                    <div key={idx} className="bg-white p-3 w-[85%] flex justify-center shadow-sm">
-                      <img 
-                        src={img.startsWith('http') ? img : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${img}`} 
-                        alt={`Indexing logo ${idx + 1}`} 
-                        className="max-w-full h-auto object-contain"
-                      />
-                    </div>
-                  ))
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </aside>
+    <main className="w-full bg-white font-sans flex-grow">
+      {/* Marquee animation styles */}
+      <style>{`
+        @keyframes marqueeUp {
+          0% { transform: translateY(100%); }
+          100% { transform: translateY(-100%); }
+        }
+        .marquee-vertical {
+          animation: marqueeUp 18s linear infinite;
+        }
+        .marquee-vertical:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
-        {/* Center Main Content */}
-        <div className="lg:w-[50%] w-full p-4 lg:border-r border-green-600/40 flex flex-col mb-6 lg:mb-0">
-          
-          {/* Welcome Section */}
-          <section className="mb-6">
-            <h1 
-              className="text-2xl md:text-3xl font-serif font-bold mb-4 text-[#00008b]" 
-              style={{ color: '#008000' }} // Overriding to green as seen in the screenshot
-              dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome' }}
-            />
-            <div 
-              className="text-gray-900 text-justify leading-relaxed text-[15px] space-y-4"
-              dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
-            />
-          </section>
+      {/* ===== TABLE-STYLE 3-COLUMN LAYOUT ===== */}
+      <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
+        <colgroup>
+          <col style={{ width: '150px' }} />
+          <col />
+          <col style={{ width: '220px' }} />
+        </colgroup>
+        <tbody>
+          <tr className="align-top">
 
-          {/* Scope and News Section */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-gray-200">
-            {/* Scope */}
-            <div className="flex flex-col">
-              <div 
-                className="text-white font-bold py-2 px-3 text-[15px]" 
-                style={{ backgroundColor: secondaryColor }}
-                dangerouslySetInnerHTML={{ __html: s.scopeTitle || 'example' }}
-              />
-              <div 
-                className="p-4 text-white text-[14px] leading-relaxed flex-grow mt-[1px] [&>p]:mb-3 [&>p:last-child]:mb-0"
-                style={{ backgroundColor: secondaryColor }}
-                dangerouslySetInnerHTML={{ __html: s.scopeText || 'example' }}
-              />
-            </div>
-
-            {/* News */}
-            <div className="flex flex-col">
-              <div 
-                className="text-white font-bold py-2 px-3 text-[15px]" 
-                style={{ backgroundColor: secondaryColor }}
-              >
-                Journal News
-              </div>
-              <div className="p-4 flex-grow bg-white mt-[2px]" style={{ border: `1px solid ${secondaryColor}` }}>
-                <ul className="space-y-3">
-                  {s.newsLinks && s.newsLinks.length > 0 ? (
-                    s.newsLinks.map((link: any, idx: number) => (
-                      <li key={idx}>
-                        <Link 
-                          href={link.content ? `/news/${link._id}` : (link.url || '#')} 
-                          className="hover:underline text-[14px]"
-                          style={{ color: themeColor }}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))
-                  ) : (
-                    <li className="text-gray-500 text-sm">No news available.</li>
-                  )}
-                </ul>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        {/* Right Sidebar */}
-        <aside className="lg:w-[25%] w-full p-4 flex flex-col gap-6">
-          
-          {/* Call for papers box */}
-          <div className="w-full rounded-md p-[6px]" style={{ backgroundColor: themeColor }}>
-            <div className="bg-[#f39c12] w-full overflow-hidden h-[180px] relative flex justify-center">
-              <div className="marquee-vertical-cfp absolute w-full flex flex-col gap-4 p-4">
-                {/* Block 1 */}
-                <div>
-                  <div>
-                    <div className="font-bold text-black text-xl leading-tight">Call for Papers</div>
-                    <div className="text-black text-[15px] mt-1">For Upcoming Issue</div>
-                  </div>
-                  <hr className="border-black/20 my-3" />
-                  <div>
-                    <div className="font-bold text-black text-[15px] mb-1">Send Manuscripts to:</div>
-                    <div className="text-[#00008b] text-[15px]">
-                      ijespr@gmail.com,
-                      <br />
-                      ijeseditorinchief@gmail.com
-                    </div>
-                  </div>
+            {/* ──── LEFT SIDEBAR ──── */}
+            <td className="p-2 align-top">
+              <div className="border-2" style={{ borderColor: themeColor }}>
+                {/* Header */}
+                <div
+                  className="text-white font-bold text-[12px] px-2 py-1.5"
+                  style={{ backgroundColor: themeColor }}
+                >
+                  Indexing &amp; Citation:
                 </div>
-                {/* Duplicate Block 1 for seamless scroll */}
-                <div className="mt-8">
-                  <div>
-                    <div className="font-bold text-black text-xl leading-tight">Call for Papers</div>
-                    <div className="text-black text-[15px] mt-1">For Upcoming Issue</div>
-                  </div>
-                  <hr className="border-black/20 my-3" />
-                  <div>
-                    <div className="font-bold text-black text-[15px] mb-1">Send Manuscripts to:</div>
-                    <div className="text-[#00008b] text-[15px]">
-                      ijespr@gmail.com,
-                      <br />
-                      ijeseditorinchief@gmail.com
-                    </div>
+                {/* Scrolling indexing logos */}
+                <div
+                  className="overflow-hidden relative"
+                  style={{
+                    backgroundColor: orangeColor,
+                    height: s.indexingImages && s.indexingImages.length > 2 ? '300px' : '200px'
+                  }}
+                >
+                  <div className="marquee-vertical w-full flex flex-col items-center gap-3 p-2 absolute">
+                    {s.indexingImages && s.indexingImages.length > 0 ? (
+                      s.indexingImages.map((img: string, idx: number) => (
+                        <div key={idx} className="bg-white p-2 w-full flex justify-center border border-gray-200">
+                          <img
+                            src={resolveUrl(img)}
+                            alt={`Indexing ${idx + 1}`}
+                            className="max-w-full h-auto object-contain"
+                            style={{ maxHeight: '55px' }}
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-white text-[11px] text-center p-3">No indexing images uploaded.</div>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </td>
 
-          {/* Important Links box */}
-          <div className="w-full rounded-md overflow-hidden pb-2" style={{ backgroundColor: themeColor }}>
-            <div className="p-3">
-              <div className="text-[#f39c12] font-bold underline text-[15px]">Important Links:</div>
-            </div>
-            <div className="flex flex-col">
-              <Link href="/authors" className="px-4 py-2 text-white text-[13px] border-t border-white/20 hover:bg-white/10 transition-colors">
-                Instructions to Authors
-              </Link>
-              <Link href="/review-process" className="px-4 py-2 text-white text-[13px] border-t border-white/20 hover:bg-white/10 transition-colors">
-                Review Process
-              </Link>
-              <Link href="/ethics" className="px-4 py-2 text-white text-[13px] border-t border-white/20 hover:bg-white/10 transition-colors">
-                Ethics of Journal
-              </Link>
-              <Link href="/paper-format" className="px-4 py-2 text-white text-[13px] border-t border-white/20 hover:bg-white/10 transition-colors">
-                IJESPR Paper Format
-              </Link>
-              <Link href="/copyright-form" className="px-4 py-2 text-white text-[13px] border-t border-white/20 hover:bg-white/10 transition-colors">
-                IJESPR Copyright Form
-              </Link>
-            </div>
-          </div>
+            {/* ──── CENTER CONTENT ──── */}
+            <td className="px-4 py-3 align-top border-l border-r border-gray-200">
 
-          {/* Vertical Side Banner */}
-          {s.sideBannerUrl ? (
-            <img 
-              src={s.sideBannerUrl.startsWith('http') ? s.sideBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${s.sideBannerUrl}`} 
-              alt="Sidebar Banner" 
-              className="w-full max-w-[280px] h-auto object-contain border border-gray-200 shadow-sm rounded mx-auto mt-2"
-            />
-          ) : null}
+              {/* Welcome Section */}
+              <section className="mb-5">
+                <h1
+                  className="text-[22px] font-serif font-bold mb-3"
+                  style={{ color: '#006400' }}
+                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome to IJAIQT' }}
+                />
+                <div
+                  className="text-gray-800 text-justify leading-[1.7] text-[14px] space-y-3"
+                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
+                />
+              </section>
 
-        </aside>
+              {/* Scope + News row */}
+              <section className="grid grid-cols-2 gap-3">
+                {/* Key Features / Scope */}
+                <div className="flex flex-col">
+                  <div
+                    className="text-white font-bold py-2 px-3 text-[13px]"
+                    style={{ backgroundColor: orangeColor }}
+                    dangerouslySetInnerHTML={{ __html: s.scopeTitle || 'Key Features &amp; Quality Commitment' }}
+                  />
+                  <div
+                    className="p-3 text-white text-[12px] leading-[1.6] flex-grow [&>p]:mb-2 [&>p:last-child]:mb-0"
+                    style={{ backgroundColor: orangeColor }}
+                    dangerouslySetInnerHTML={{ __html: s.scopeText || '' }}
+                  />
+                </div>
 
-      </div>
+                {/* Journal News */}
+                <div className="flex flex-col">
+                  <div
+                    className="text-white font-bold py-2 px-3 text-[13px]"
+                    style={{ backgroundColor: orangeColor }}
+                  >
+                    Journal News
+                  </div>
+                  <div className="p-3 flex-grow bg-white border border-gray-300 border-t-0">
+                    <ul className="space-y-2.5">
+                      {s.newsLinks && s.newsLinks.length > 0 ? (
+                        s.newsLinks.map((link: any, idx: number) => (
+                          <li key={idx}>
+                            <Link
+                              href={link.content ? `/news/${link._id}` : (link.url || '#')}
+                              className="hover:underline text-[13px]"
+                              style={{ color: themeColor }}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-gray-400 text-[12px]">No news available.</li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </td>
+
+            {/* ──── RIGHT SIDEBAR ──── */}
+            <td className="p-2 align-top">
+              <div className="flex flex-col gap-3">
+
+                {/* Call for Papers */}
+                <div className="border-2" style={{ borderColor: themeColor }}>
+                  <div className="p-3" style={{ backgroundColor: orangeColor }}>
+                    <div className="font-bold text-black text-[13px] mb-0.5">Send Manuscripts to:</div>
+                    <div className="text-[11px] underline mb-2" style={{ color: themeColor }}>
+                      ijespr@gmail.com<br />
+                      ijeseditorinchief@gmail.com
+                    </div>
+                    <hr className="border-black/20 my-2" />
+                    <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
+                    <div className="text-black text-[12px] mt-0.5">For Upcoming Issue</div>
+                  </div>
+                </div>
+
+                {/* Important Links */}
+                <div className="w-full" style={{ backgroundColor: themeColor }}>
+                  <div className="px-3 py-2 border-b border-white/20">
+                    <span className="font-bold underline text-[12px]" style={{ color: orangeColor }}>Important Links:</span>
+                  </div>
+                  {[
+                    { label: 'Instructions to Authors', href: '/authors' },
+                    { label: 'Review Process', href: '/review-process' },
+                    { label: 'Ethics of Journal', href: '/ethics' },
+                    { label: 'IJESPR Paper Format', href: '/paper-format' },
+                    { label: 'IJESPR Copyright Form', href: '/copyright-form' },
+                  ].map((link, idx) => (
+                    <Link
+                      key={idx}
+                      href={link.href}
+                      className="block px-3 py-1.5 text-white text-[12px] border-b border-white/15 hover:bg-white/10 transition-colors last:border-b-0"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Side Banner / Poster */}
+                {s.sideBannerUrl && (
+                  <img
+                    src={resolveUrl(s.sideBannerUrl)}
+                    alt="Journal Poster"
+                    className="w-full h-auto object-contain border border-gray-200"
+                  />
+                )}
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
     </main>
   )
 }
