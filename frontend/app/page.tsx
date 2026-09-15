@@ -119,7 +119,7 @@ export default function HomePage() {
                 dangerouslySetInnerHTML={{ __html: s.scopeTitle || 'example' }}
               />
               <div 
-                className="p-4 text-center text-white text-xl flex-grow flex items-center justify-center mt-[1px]"
+                className="p-4 text-white text-[14px] leading-relaxed flex-grow mt-[1px] [&>p]:mb-3 [&>p:last-child]:mb-0"
                 style={{ backgroundColor: secondaryColor }}
                 dangerouslySetInnerHTML={{ __html: s.scopeText || 'example' }}
               />
