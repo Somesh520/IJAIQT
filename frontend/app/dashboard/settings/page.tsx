@@ -260,7 +260,7 @@ export default function SettingsPage() {
                 <div className="mb-4">
                   <div className="border border-slate-200 rounded-lg p-2 bg-slate-50">
                     <img 
-                      src={currentBannerUrl.startsWith('http') ? currentBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${currentBannerUrl}`} 
+                      src={currentBannerUrl.startsWith('http') ? currentBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${currentBannerUrl}`} 
                       alt="Top Banner" 
                       className="w-full h-auto max-h-32 object-contain rounded"
                     />
@@ -308,7 +308,7 @@ export default function SettingsPage() {
                 <div className="mb-4">
                   <div className="border border-slate-200 rounded-lg p-2 bg-slate-50 w-32">
                     <img 
-                      src={currentSideBannerUrl.startsWith('http') ? currentSideBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${currentSideBannerUrl}`} 
+                      src={currentSideBannerUrl.startsWith('http') ? currentSideBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${currentSideBannerUrl}`} 
                       alt="Side Banner" 
                       className="w-full h-auto object-contain rounded"
                     />
@@ -358,7 +358,7 @@ export default function SettingsPage() {
                   {currentIndexingImages.map((imgUrl, idx) => (
                     <div key={idx} className="border border-slate-200 rounded-lg p-2 bg-slate-50 relative group w-24">
                       <img 
-                        src={imgUrl.startsWith('http') ? imgUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${imgUrl}`} 
+                        src={imgUrl.startsWith('http') ? imgUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${imgUrl}`} 
                         alt="Indexing Image" 
                         className="w-full h-auto object-contain rounded"
                       />

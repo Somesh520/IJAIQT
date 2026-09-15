@@ -123,7 +123,7 @@ export default function IssueDetailsPage() {
                           </AnimatedLink>
                           <span className="text-black mx-2">|</span>
                           <AnimatedLink
-                            href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${paper.pdfUrl}`}
+                            href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${paper.pdfUrl}`}
                             target="_blank"
                             className="text-[#3b00ff]"
                           >

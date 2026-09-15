@@ -117,7 +117,7 @@ export default function CurrentIssuePage() {
                         <span className="text-gray-400">|</span>
                         <div className="flex items-center gap-1 text-red-600 hover:underline">
                           <FileText className="w-5 h-5" />
-                          <a href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${paper.pdfUrl}`} target="_blank" rel="noopener noreferrer" className="text-blue-800">
+                          <a href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${paper.pdfUrl}`} target="_blank" rel="noopener noreferrer" className="text-blue-800">
                             Download Complete Paper
                           </a>
                         </div>

@@ -57,7 +57,7 @@ export default function Navbar() {
         {bannerUrl ? (
           <div className="w-full flex justify-center mb-1">
             <img 
-              src={bannerUrl.startsWith('http') ? bannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${bannerUrl}`} 
+              src={bannerUrl.startsWith('http') ? bannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${bannerUrl}`} 
               alt="Site Banner" 
               className="object-cover border border-gray-300 shadow-sm"
               style={{ width: '1017px', height: '179px' }}

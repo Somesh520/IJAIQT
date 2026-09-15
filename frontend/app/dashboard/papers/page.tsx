@@ -341,7 +341,7 @@ export default function ManagePapersPage() {
                         </span>
                       )}
                       
-                      <a href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${paper.pdfUrl}`} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-red-600 hover:text-red-700 hover:underline">
+                      <a href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${paper.pdfUrl}`} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-red-600 hover:text-red-700 hover:underline">
                         <FileText size={14} /> View PDF
                       </a>
                     </div>

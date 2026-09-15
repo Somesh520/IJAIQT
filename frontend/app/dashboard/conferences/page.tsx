@@ -193,7 +193,7 @@ export default function ManageConferencesPage() {
                     <div className="flex-1">
                       <p className="text-slate-900 font-medium leading-relaxed">{conf.title}</p>
                       <a 
-                        href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${conf.pdfUrl}`}
+                        href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${conf.pdfUrl}`}
                         target="_blank"
                         rel="noreferrer"
                         className="text-brand-600 hover:underline text-sm font-medium mt-2 inline-block"

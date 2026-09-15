@@ -110,7 +110,7 @@ export default function PaperAbstractDetailsPage() {
                 </td>
                 <td className="p-4 align-top">
                   <AnimatedLink
-                    href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5001'}${paper.pdfUrl}`}
+                    href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${paper.pdfUrl}`}
                     target="_blank"
                     className="text-[#3b00ff] text-[17px]"
                   >
