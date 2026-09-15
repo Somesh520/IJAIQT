@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const SiteSettings = require('./models/SiteSettings');
 
-const MONGODB_URI = 'mongodb://admin:adminpassword@localhost:27017/college_journal?authSource=admin';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://admin:adminpassword@mongodb:27017/college_journal?authSource=admin';
 
 const authorsHtml = `
 <h2>A) Instructions to Authors</h2>
