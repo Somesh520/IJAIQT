@@ -147,6 +147,9 @@ export default function SettingsPage() {
         formData.append('sideBannerImage', sideBannerFile)
       } else if (sideBannerUrlInput) {
         formData.append('sideBannerUrl', sideBannerUrlInput)
+      } else if (!currentSideBannerUrl) {
+        // User deleted the sidebar banner — send empty to clear it
+        formData.append('sideBannerUrl', '')
       }
 
       if (indexingImageFiles) {
@@ -306,12 +309,20 @@ export default function SettingsPage() {
               </div>
               {currentSideBannerUrl && (
                 <div className="mb-4">
-                  <div className="border border-slate-200 rounded-lg p-2 bg-slate-50 w-32">
+                  <div className="border border-slate-200 rounded-lg p-2 bg-slate-50 w-32 relative group">
                     <img 
                       src={currentSideBannerUrl.startsWith('http') ? currentSideBannerUrl : `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${currentSideBannerUrl}`} 
                       alt="Side Banner" 
                       className="w-full h-auto object-contain rounded"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setCurrentSideBannerUrl('')}
+                      className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Remove sidebar banner"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
                   </div>
                 </div>
               )}

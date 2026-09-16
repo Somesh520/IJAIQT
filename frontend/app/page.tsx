@@ -205,8 +205,8 @@ export default function HomePage() {
                     { label: 'Instructions to Authors', href: '/authors' },
                     { label: 'Review Process', href: '/review-process' },
                     { label: 'Ethics of Journal', href: '/ethics' },
-                    { label: 'IJESPR Paper Format', href: '/paper-format' },
-                    { label: 'IJESPR Copyright Form', href: '/copyright-form' },
+                    { label: 'IJAIQT Paper Format', href: '/paper-format' },
+                    { label: 'IJAIQT Copyright Form', href: '/copyright-form' },
                   ].map((link, idx) => (
                     <Link
                       key={idx}
