@@ -22,6 +22,7 @@ export default function HomePage() {
     }
   }
 
+
   useEffect(() => {
     fetchSettings()
 
@@ -122,60 +123,16 @@ export default function HomePage() {
               <section className="mb-5">
                 <h1
                   className="text-[22px] font-serif font-bold mb-3"
-                  style={{ color: '#006400' }}
+                  style={{ color: '#000000' }}
                   dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome to IJAIQT' }}
                 />
                 <div
-                  className="text-gray-800 text-justify leading-[1.7] text-[14px] space-y-3"
+                  className="text-gray-800 text-justify leading-[1.7] text-[14px] [&_p]:mb-4 [&_div]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_li]:mb-2 [&_h1]:mb-4 [&_h2]:mb-4 [&_h3]:mb-4 [&>*:last-child]:mb-0"
                   dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
                 />
               </section>
 
-              {/* Scope + News row */}
-              <section className="grid grid-cols-2 gap-3">
-                {/* Key Features / Scope */}
-                <div className="flex flex-col">
-                  <div
-                    className="text-white font-bold py-2 px-3 text-[13px]"
-                    style={{ backgroundColor: orangeColor }}
-                    dangerouslySetInnerHTML={{ __html: s.scopeTitle || 'Key Features &amp; Quality Commitment' }}
-                  />
-                  <div
-                    className="p-3 text-white text-[12px] leading-[1.6] flex-grow [&>p]:mb-2 [&>p:last-child]:mb-0"
-                    style={{ backgroundColor: orangeColor }}
-                    dangerouslySetInnerHTML={{ __html: s.scopeText || '' }}
-                  />
-                </div>
 
-                {/* Journal News */}
-                <div className="flex flex-col">
-                  <div
-                    className="text-white font-bold py-2 px-3 text-[13px]"
-                    style={{ backgroundColor: orangeColor }}
-                  >
-                    Journal News
-                  </div>
-                  <div className="p-3 flex-grow bg-white border border-gray-300 border-t-0">
-                    <ul className="space-y-2.5">
-                      {s.newsLinks && s.newsLinks.length > 0 ? (
-                        s.newsLinks.map((link: any, idx: number) => (
-                          <li key={idx}>
-                            <Link
-                              href={link.content ? `/news/${link._id}` : (link.url || '#')}
-                              className="hover:underline text-[13px]"
-                              style={{ color: themeColor }}
-                            >
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))
-                      ) : (
-                        <li className="text-gray-400 text-[12px]">No news available.</li>
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              </section>
             </td>
 
             {/* ──── RIGHT SIDEBAR ──── */}

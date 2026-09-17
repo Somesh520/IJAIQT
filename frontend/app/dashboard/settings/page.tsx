@@ -112,6 +112,27 @@ export default function SettingsPage() {
     setNewsLinks(newLinks)
   }
 
+  // Shared Jodit config — allows paste without popups
+  const joditConfig = (height: number = 250, placeholder: string = '') => ({
+    readonly: false,
+    height,
+    placeholder,
+    askBeforePasteHTML: false,
+    askBeforePasteFromWord: false,
+    defaultActionOnPaste: 'insert_clear_html' as const,
+    defaultActionOnPasteFromWord: 'insert_clear_html' as const,
+    processPasteHTML: true,
+    buttons: [
+      'bold', 'italic', 'underline', 'strikethrough', '|',
+      'ul', 'ol', '|',
+      'font', 'fontsize', 'brush', '|',
+      'align', 'indent', 'outdent', '|',
+      'link', 'image', 'table', '|',
+      'hr', 'eraser', 'copyformat', '|',
+      'undo', 'redo', '|',
+      'fullsize', 'source', 'print'
+    ],
+  })
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -415,11 +436,7 @@ export default function SettingsPage() {
               <label className="block text-sm font-semibold text-slate-700 mb-1">Welcome Title</label>
               <JoditEditor
                 value={homeWelcomeTitle}
-                config={{
-                  readonly: false,
-                  height: 150,
-                  placeholder: 'Enter welcome title...'
-                }}
+                config={joditConfig(150, 'Enter welcome title...')}
                 onBlur={(newContent) => setHomeWelcomeTitle(newContent)}
               />
             </div>
@@ -428,11 +445,7 @@ export default function SettingsPage() {
               <label className="block text-sm font-semibold text-slate-700 mb-2">Welcome Text</label>
               <JoditEditor
                 value={homeWelcomeText}
-                config={{
-                  readonly: false,
-                  height: 300,
-                  placeholder: 'Enter welcome text...'
-                }}
+                config={joditConfig(300, 'Enter welcome text...')}
                 onBlur={(newContent) => setHomeWelcomeText(newContent)}
               />
             </div>
@@ -444,11 +457,7 @@ export default function SettingsPage() {
               <label className="block text-sm font-semibold text-slate-700 mb-1">Scope Box Title</label>
               <JoditEditor
                 value={scopeTitle}
-                config={{
-                  readonly: false,
-                  height: 150,
-                  placeholder: 'Enter scope title...'
-                }}
+                config={joditConfig(150, 'Enter scope title...')}
                 onBlur={(newContent) => setScopeTitle(newContent)}
               />
             </div>
@@ -457,11 +466,7 @@ export default function SettingsPage() {
               <label className="block text-sm font-semibold text-slate-700 mb-2">Scope Box Text</label>
               <JoditEditor
                 value={scopeText}
-                config={{
-                  readonly: false,
-                  height: 250,
-                  placeholder: 'Enter scope text...'
-                }}
+                config={joditConfig(250, 'Enter scope text...')}
                 onBlur={(newContent) => setScopeText(newContent)}
               />
             </div>
@@ -519,11 +524,7 @@ export default function SettingsPage() {
                   <label className="block text-xs font-semibold text-slate-700 mb-2">Content (HTML allowed)</label>
                   <JoditEditor
                     value={link.content}
-                    config={{
-                      readonly: false,
-                      height: 200,
-                      placeholder: 'Enter news content here...'
-                    }}
+                    config={joditConfig(200, 'Enter news content here...')}
                     onBlur={(newContent) => updateNewsLink(idx, 'content', newContent)}
                   />
                 </div>
@@ -553,11 +554,7 @@ export default function SettingsPage() {
             <label className="block text-sm font-semibold text-slate-700 mb-2">Footer Text</label>
             <JoditEditor
               value={footerText}
-              config={{
-                readonly: false,
-                height: 150,
-                placeholder: 'Enter footer text...'
-              }}
+              config={joditConfig(150, 'Enter footer text...')}
               onBlur={(newContent) => setFooterText(newContent)}
             />
           </div>

@@ -31,7 +31,7 @@ export default function ArchivePage() {
         <p className="mb-8 font-bold">
           Browse the complete archive of all past issues published in the journal. All papers are open-access and available for download.
         </p>
-        
+
         {issues.length === 0 ? (
           <div className="p-4 bg-gray-50 border border-gray-200 text-center text-gray-500">
             No past issues found in the archive.
