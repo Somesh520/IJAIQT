@@ -142,14 +142,29 @@ export default function HomePage() {
                 {/* Call for Papers */}
                 <div className="border-2" style={{ borderColor: themeColor }}>
                   <div className="p-3" style={{ backgroundColor: orangeColor }}>
+                    <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
+                    <div className="text-black text-[12px] mt-0.5 mb-2">For Upcoming Issue</div>
+                    
+                    {s.submissionDeadline && (
+                      <div className="mt-2 text-[11px] text-black">
+                        <div className="font-bold">Submission Deadline:</div>
+                        <div className="mb-1">{s.submissionDeadline}</div>
+                        <div className="font-bold">Notification of Acceptance:</div>
+                        <div className="mb-1">{s.notificationOfAcceptance}</div>
+                        <div className="font-bold">Final Camera-Ready Submission:</div>
+                        <div className="mb-1">{s.finalCameraReady}</div>
+                        <div className="font-bold">Online Publication:</div>
+                        <div>{s.onlinePublication}</div>
+                      </div>
+                    )}
+
+                    <hr className="border-black/20 my-3" />
+
                     <div className="font-bold text-black text-[13px] mb-0.5">Send Manuscripts to:</div>
                     <div className="text-[11px] underline mb-2" style={{ color: themeColor }}>
                       ijespr@gmail.com<br />
                       ijeseditorinchief@gmail.com
                     </div>
-                    <hr className="border-black/20 my-2" />
-                    <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
-                    <div className="text-black text-[12px] mt-0.5">For Upcoming Issue</div>
                   </div>
                 </div>
 

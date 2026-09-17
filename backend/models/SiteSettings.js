@@ -74,6 +74,22 @@ const siteSettingsSchema = new mongoose.Schema({
     type: String,
     default: '<h2>Call For Papers</h2>'
   },
+  submissionDeadline: {
+    type: String,
+    default: 'January 31, 2027'
+  },
+  notificationOfAcceptance: {
+    type: String,
+    default: 'February 28, 2027'
+  },
+  finalCameraReady: {
+    type: String,
+    default: 'March 15, 2027'
+  },
+  onlinePublication: {
+    type: String,
+    default: 'March 30, 2027'
+  },
   authorsHtml: {
     type: String,
     default: '<h2>Instruction To Authors</h2>'

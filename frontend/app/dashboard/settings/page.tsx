@@ -37,6 +37,12 @@ export default function SettingsPage() {
   const [faqHtml, setFaqHtml] = useState('')
   const [currentIssueHtml, setCurrentIssueHtml] = useState('')
 
+  // Timeline Dates
+  const [submissionDeadline, setSubmissionDeadline] = useState('')
+  const [notificationOfAcceptance, setNotificationOfAcceptance] = useState('')
+  const [finalCameraReady, setFinalCameraReady] = useState('')
+  const [onlinePublication, setOnlinePublication] = useState('')
+
   // Files and URLs
   const [bannerFile, setBannerFile] = useState<File | null>(null)
   const [bannerUrlInput, setBannerUrlInput] = useState('')
@@ -86,6 +92,10 @@ export default function SettingsPage() {
         setTopicsHtml(d.topicsHtml || '')
         setFaqHtml(d.faqHtml || '')
         setCurrentIssueHtml(d.currentIssueHtml || '')
+        setSubmissionDeadline(d.submissionDeadline || '')
+        setNotificationOfAcceptance(d.notificationOfAcceptance || '')
+        setFinalCameraReady(d.finalCameraReady || '')
+        setOnlinePublication(d.onlinePublication || '')
         setNewsLinks(d.newsLinks || [])
       }
     } catch (err: any) {
@@ -155,6 +165,10 @@ export default function SettingsPage() {
       formData.append('sideButton1Url', sideButton1Url)
       formData.append('sideButton2Text', sideButton2Text)
       formData.append('sideButton2Url', sideButton2Url)
+      formData.append('submissionDeadline', submissionDeadline)
+      formData.append('notificationOfAcceptance', notificationOfAcceptance)
+      formData.append('finalCameraReady', finalCameraReady)
+      formData.append('onlinePublication', onlinePublication)
       formData.append('newsLinks', JSON.stringify(newsLinks))
 
       // Images
@@ -470,6 +484,56 @@ export default function SettingsPage() {
                 onBlur={(newContent) => setScopeText(newContent)}
               />
             </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Timeline Dates Section */}
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <SettingsIcon className="w-5 h-5 text-brand-600" />
+            Timeline Dates
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Submission Deadline</label>
+              <input
+                type="text"
+                value={submissionDeadline}
+                onChange={(e) => setSubmissionDeadline(e.target.value)}
+                placeholder="e.g. January 31, 2027"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Notification of Acceptance</label>
+              <input
+                type="text"
+                value={notificationOfAcceptance}
+                onChange={(e) => setNotificationOfAcceptance(e.target.value)}
+                placeholder="e.g. February 28, 2027"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Final Camera-Ready Submission</label>
+              <input
+                type="text"
+                value={finalCameraReady}
+                onChange={(e) => setFinalCameraReady(e.target.value)}
+                placeholder="e.g. March 15, 2027"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Online Publication</label>
+              <input
+                type="text"
+                value={onlinePublication}
+                onChange={(e) => setOnlinePublication(e.target.value)}
+                placeholder="e.g. March 30, 2027"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
+              />
             </div>
           </div>
         </div>

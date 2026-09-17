@@ -100,7 +100,9 @@ router.put('/',
         'footerText',
         'editorialBoardHtml', 'callForPapersHtml',
         'authorsHtml', 'topicsHtml',
-        'faqHtml', 'currentIssueHtml'
+        'faqHtml', 'currentIssueHtml',
+        'submissionDeadline', 'notificationOfAcceptance',
+        'finalCameraReady', 'onlinePublication'
       ];
 
       for (const field of updateableFields) {
