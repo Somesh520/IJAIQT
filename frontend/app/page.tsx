@@ -127,7 +127,7 @@ export default function HomePage() {
                   dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome to IJAIQT' }}
                 />
                 <div
-                  className="text-gray-800 text-justify leading-[1.7] text-[14px] [&_p]:mb-4 [&_div]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_li]:mb-2 [&_h1]:mb-4 [&_h2]:mb-4 [&_h3]:mb-4 [&>*:last-child]:mb-0"
+                  className="text-gray-800 text-justify leading-[1.7] text-[14px] [&_p]:!text-justify [&_div]:!text-justify [&_li]:!text-justify [&_span]:!text-justify [&_p]:mb-4 [&_div]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_li]:mb-2 [&_h1]:mb-4 [&_h2]:mb-4 [&_h3]:mb-4 [&>*:last-child]:mb-0"
                   dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
                 />
               </section>
@@ -145,18 +145,16 @@ export default function HomePage() {
                     <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
                     <div className="text-black text-[12px] mt-0.5 mb-2">For Upcoming Issue</div>
                     
-                    {s.submissionDeadline && (
-                      <div className="mt-2 text-[11px] text-black">
-                        <div className="font-bold">Submission Deadline:</div>
-                        <div className="mb-1">{s.submissionDeadline}</div>
-                        <div className="font-bold">Notification of Acceptance:</div>
-                        <div className="mb-1">{s.notificationOfAcceptance}</div>
-                        <div className="font-bold">Final Camera-Ready Submission:</div>
-                        <div className="mb-1">{s.finalCameraReady}</div>
-                        <div className="font-bold">Online Publication:</div>
-                        <div>{s.onlinePublication}</div>
-                      </div>
-                    )}
+                    <div className="mt-2 text-[11px] text-black">
+                      <div className="font-bold">Submission Deadline:</div>
+                      <div className="mb-1">{s.submissionDeadline}</div>
+                      <div className="font-bold">Notification of Acceptance:</div>
+                      <div className="mb-1">{s.notificationOfAcceptance}</div>
+                      <div className="font-bold">Final Camera-Ready Submission:</div>
+                      <div className="mb-1">{s.finalCameraReady}</div>
+                      <div className="font-bold">Online Publication:</div>
+                      <div>{s.onlinePublication}</div>
+                    </div>
 
                     <hr className="border-black/20 my-3" />
 
