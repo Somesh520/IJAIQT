@@ -45,6 +45,12 @@ export default function HomePage() {
 
   const resolveUrl = (url: string) => {
     if (!url) return ''
+    if (url.includes('drive.google.com/file/d/')) {
+      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/)
+      if (match && match[1]) {
+        return `https://drive.google.com/uc?export=view&id=${match[1]}`
+      }
+    }
     if (url.startsWith('http')) return url
     const base = process.env.NEXT_PUBLIC_API_URL
       ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '')
