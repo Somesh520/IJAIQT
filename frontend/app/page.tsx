@@ -145,18 +145,53 @@ export default function HomePage() {
                     <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
                     <div className="text-black text-[12px] mt-0.5 mb-2">For Upcoming Issue</div>
                     
-                    {s.submissionDeadline && (
-                      <div className="mt-2 text-[11px] text-black">
-                        <div className="font-bold">Submission Deadline:</div>
-                        <div className="mb-1">{s.submissionDeadline}</div>
-                        <div className="font-bold">Notification of Acceptance:</div>
-                        <div className="mb-1">{s.notificationOfAcceptance}</div>
-                        <div className="font-bold">Final Camera-Ready Submission:</div>
-                        <div className="mb-1">{s.finalCameraReady}</div>
-                        <div className="font-bold">Online Publication:</div>
-                        <div>{s.onlinePublication}</div>
-                      </div>
-                    )}
+                    {(() => {
+                      const extractDate = (html: string, label: string): string => {
+                        if (!html) return '';
+                        const regex = new RegExp(`<td>\\s*${label}\\s*</td>\\s*<td>(.*?)(?:<br>)?\\s*</td>`, 'i');
+                        const match = html.match(regex);
+                        if (match) {
+                          return match[1].replace(/<[^>]*>?/gm, '').trim();
+                        }
+                        return '';
+                      };
+
+                      const deadline = s.submissionDeadline || extractDate(s.callForPapersHtml, 'Submission Deadline');
+                      const notification = s.notificationOfAcceptance || extractDate(s.callForPapersHtml, 'Notification of Acceptance');
+                      const cameraReady = s.finalCameraReady || extractDate(s.callForPapersHtml, 'Final Camera-Ready Submission');
+                      const publication = s.onlinePublication || extractDate(s.callForPapersHtml, 'Online Publication');
+
+                      if (!deadline && !notification && !cameraReady && !publication) return null;
+
+                      return (
+                        <div className="mt-2 text-[11px] text-black">
+                          {deadline && (
+                            <>
+                              <div className="font-bold">Submission Deadline:</div>
+                              <div className="mb-1">{deadline}</div>
+                            </>
+                          )}
+                          {notification && (
+                            <>
+                              <div className="font-bold">Notification of Acceptance:</div>
+                              <div className="mb-1">{notification}</div>
+                            </>
+                          )}
+                          {cameraReady && (
+                            <>
+                              <div className="font-bold">Final Camera-Ready Submission:</div>
+                              <div className="mb-1">{cameraReady}</div>
+                            </>
+                          )}
+                          {publication && (
+                            <>
+                              <div className="font-bold">Online Publication:</div>
+                              <div>{publication}</div>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })()}
 
                     <hr className="border-black/20 my-3" />
 
