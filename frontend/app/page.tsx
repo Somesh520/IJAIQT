@@ -211,7 +211,7 @@ export default function HomePage() {
             {/* Important Links */}
             <div className="w-full" style={{ backgroundColor: themeColor }}>
               <div className="px-3 py-2 border-b border-white/20 text-center">
-                <span className="font-bold  text-[16px] leading-tight " style={{ color: orangeColor }}>Important Links:</span>
+                <span className="font-bold  text-[16px] leading-tight " style={{ color: orangeColor }}>Important Links</span>
               </div>
               {[
                 { label: 'Instructions to Authors', href: '/authors' },
