@@ -74,18 +74,11 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ===== TABLE-STYLE 3-COLUMN LAYOUT ===== */}
-      <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
-        <colgroup>
-          <col style={{ width: '210px' }} />
-          <col />
-          <col style={{ width: '220px' }} />
-        </colgroup>
-        <tbody>
-          <tr className="align-top">
+      {/* ===== RESPONSIVE FLEX LAYOUT ===== */}
+      <div className="w-full flex flex-col md:flex-row md:items-start">
 
-            {/* ──── LEFT SIDEBAR ──── */}
-            <td className="p-2 align-top">
+        {/* ──── LEFT SIDEBAR (Mobile: 3rd, Desktop: 1st) ──── */}
+        <div className="w-full md:w-[210px] shrink-0 p-4 md:p-2 order-3 md:order-1">
               <div className="flex flex-col gap-3">
                 {/* Call for Papers */}
                 <div className="border-2" style={{ borderColor: themeColor }}>
@@ -187,10 +180,10 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </td>
+            </div>
 
-            {/* ──── CENTER CONTENT ──── */}
-            <td className="px-4 py-3 align-top border-l border-r border-gray-200">
+            {/* ──── CENTER CONTENT (Mobile: 1st, Desktop: 2nd) ──── */}
+            <div className="w-full md:flex-grow p-4 md:border-l md:border-r border-gray-200 order-1 md:order-2">
 
               {/* Welcome Section */}
               <section className="mb-5">
@@ -206,10 +199,10 @@ export default function HomePage() {
               </section>
 
 
-            </td>
+            </div>
 
-            {/* ──── RIGHT SIDEBAR ──── */}
-            <td className="p-2 align-top">
+            {/* ──── RIGHT SIDEBAR (Mobile: 2nd, Desktop: 3rd) ──── */}
+            <div className="w-full md:w-[220px] shrink-0 p-4 md:p-2 order-2 md:order-3">
               <div className="flex flex-col gap-3">
 
 
@@ -247,11 +240,9 @@ export default function HomePage() {
                   />
                 )}
               </div>
-            </td>
+            </div>
 
-          </tr>
-        </tbody>
-      </table>
+      </div>
     </main>
   )
 }

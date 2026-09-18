@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* Navigation Bar */}
       <nav style={{ backgroundColor: themeColor }}>
-        <ul className="flex w-full">
+        <ul className="flex flex-wrap w-full">
           {navLinks.map((link) => {
             const isActive = pathname === link.path
             return (

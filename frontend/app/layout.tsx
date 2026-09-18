@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${lora.variable} ${montserrat.variable} font-sans bg-slate-50 text-slate-800 antialiased`}>
         <AuthProvider>
-          <div className="min-h-screen flex flex-col bg-white w-[1017px] mx-auto border-x border-b border-gray-300 shadow-md">
+          <div className="min-h-screen flex flex-col bg-white w-full max-w-[1017px] mx-auto border-x border-b border-gray-300 shadow-md">
             <Navbar />
             {children}
             <Footer />
