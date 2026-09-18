@@ -68,11 +68,11 @@ export default function Navbar() {
     <header className="w-full bg-white flex flex-col">
       {/* Banner Image — flush to edges */}
       {bannerUrl ? (
-        <div className="w-full overflow-hidden" style={{ height: '120px' }}>
+        <div className="w-full">
           <img
             src={resolveUrl(bannerUrl)}
             alt="Site Banner"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-auto block"
             onError={(e) => {
               const parent = e.currentTarget.parentElement
               if (parent) {
