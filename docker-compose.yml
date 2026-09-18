@@ -42,7 +42,7 @@ services:
     environment:
       NODE_ENV: development
       PORT: 5001
-      MONGODB_URI: mongodb://admin:adminpassword@mongodb:27017/college_journal?authSource=admin
+      MONGODB_URI: mongodb+srv://someshsde_db_user:AuMgwNMWx19W6ARE@cluster0.92swgn2.mongodb.net/college_journal?appName=Cluster0
       JWT_SECRET: your-jwt-secret-change-in-production
       JWT_REFRESH_SECRET: your-jwt-refresh-secret-change-in-production
     volumes:
