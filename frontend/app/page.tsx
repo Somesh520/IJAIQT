@@ -83,8 +83,8 @@ export default function HomePage() {
                 {/* Call for Papers */}
                 <div className="border-2" style={{ borderColor: themeColor }}>
                   <div className="p-3" style={{ backgroundColor: orangeColor }}>
-                    <div className="font-bold text-black text-[16px] leading-tight">Call for Papers</div>
-                    <div className="text-black text-[12px] mt-0.5 mb-2">For Upcoming Issue</div>
+                    <div className="font-bold text-black text-[16px] leading-tight text-center">Call for Papers</div>
+                    <div className="text-black text-[12px] mt-0.5 mb-2 text-center">For Upcoming Issue</div>
                     
                     {(() => {
                       const extractDate = (html: string, label: string): string => {
