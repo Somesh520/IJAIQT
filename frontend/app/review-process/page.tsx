@@ -29,7 +29,7 @@ export default function ReviewProcessPage() {
 
   return (
     <main className="w-full bg-white min-h-[600px] px-2 py-4 md:px-6">
-      <div className="max-w-5xl mx-auto bg-white p-6 text-[15px] leading-relaxed text-gray-900 prose prose-slate text-justify">
+      <div className="max-w-5xl mx-auto bg-white p-6 text-[15px] leading-relaxed text-gray-900 prose prose-slate text-justify prose-li:text-[16px] prose-li:marker:text-[18px] prose-li:marker:text-slate-500">
         <div 
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
