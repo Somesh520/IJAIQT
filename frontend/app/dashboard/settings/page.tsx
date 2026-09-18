@@ -426,6 +426,39 @@ export default function SettingsPage() {
               )}
               
               <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Add Image URL</label>
+                <div className="flex gap-2 mb-4">
+                  <input
+                    type="text"
+                    placeholder="https://example.com/image.png"
+                    id="new-indexing-url"
+                    className="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault()
+                        const val = (e.target as HTMLInputElement).value
+                        if (val) {
+                          setCurrentIndexingImages([...currentIndexingImages, val])
+                          ;(e.target as HTMLInputElement).value = ''
+                        }
+                      }
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const input = document.getElementById('new-indexing-url') as HTMLInputElement
+                      if (input && input.value) {
+                        setCurrentIndexingImages([...currentIndexingImages, input.value])
+                        input.value = ''
+                      }
+                    }}
+                    className="px-4 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 rounded-lg text-sm font-medium transition-colors"
+                  >
+                    Add URL
+                  </button>
+                </div>
+                
                 <input
                   type="file"
                   accept="image/*"
