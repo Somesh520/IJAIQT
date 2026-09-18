@@ -4,15 +4,15 @@ import { useEffect, useState } from 'react'
 import { settingsAPI } from '@/lib/api'
 import { Loader2 } from 'lucide-react'
 
-export default function EthicsPage() {
+export default function ReviewProcessPage() {
   const [loading, setLoading] = useState(true)
   const [htmlContent, setHtmlContent] = useState('')
 
   useEffect(() => {
     settingsAPI.get()
       .then(res => {
-        if (res.data && res.data.ethicsHtml) {
-          setHtmlContent(res.data.ethicsHtml)
+        if (res.data && res.data.reviewProcessHtml) {
+          setHtmlContent(res.data.reviewProcessHtml)
         }
       })
       .catch(console.error)

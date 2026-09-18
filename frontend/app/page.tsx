@@ -77,7 +77,7 @@ export default function HomePage() {
       {/* ===== TABLE-STYLE 3-COLUMN LAYOUT ===== */}
       <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
         <colgroup>
-          <col style={{ width: '150px' }} />
+          <col style={{ width: '210px' }} />
           <col />
           <col style={{ width: '220px' }} />
         </colgroup>
@@ -86,65 +86,7 @@ export default function HomePage() {
 
             {/* ──── LEFT SIDEBAR ──── */}
             <td className="p-2 align-top">
-              <div className="border-2" style={{ borderColor: themeColor }}>
-                {/* Header */}
-                <div
-                  className="text-white font-bold text-[12px] px-2 py-1.5"
-                  style={{ backgroundColor: themeColor }}
-                >
-                  Indexing &amp; Citation:
-                </div>
-                {/* Scrolling indexing logos */}
-                <div
-                  className="overflow-hidden relative"
-                  style={{
-                    backgroundColor: orangeColor,
-                    height: s.indexingImages && s.indexingImages.length > 2 ? '300px' : '200px'
-                  }}
-                >
-                  <div className="marquee-vertical w-full flex flex-col items-center gap-3 p-2 absolute">
-                    {s.indexingImages && s.indexingImages.length > 0 ? (
-                      s.indexingImages.map((img: string, idx: number) => (
-                        <div key={idx} className="bg-white p-2 w-full flex justify-center border border-gray-200">
-                          <img
-                            src={resolveUrl(img)}
-                            alt={`Indexing ${idx + 1}`}
-                            className="max-w-full h-auto object-contain"
-                            style={{ maxHeight: '55px' }}
-                          />
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-white text-[11px] text-center p-3">No indexing images uploaded.</div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </td>
-
-            {/* ──── CENTER CONTENT ──── */}
-            <td className="px-4 py-3 align-top border-l border-r border-gray-200">
-
-              {/* Welcome Section */}
-              <section className="mb-5">
-                <h1
-                  className="text-[22px] font-serif font-bold mb-3"
-                  style={{ color: '#000000' }}
-                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome to IJAIQT' }}
-                />
-                <div
-                  className="text-gray-800 text-justify leading-[1.7] text-[14px] [&_p]:!text-justify [&_div]:!text-justify [&_li]:!text-justify [&_span]:!text-justify [&_p]:mb-4 [&_div]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_li]:mb-2 [&_h1]:mb-4 [&_h2]:mb-4 [&_h3]:mb-4 [&>*:last-child]:mb-0"
-                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
-                />
-              </section>
-
-
-            </td>
-
-            {/* ──── RIGHT SIDEBAR ──── */}
-            <td className="p-2 align-top">
               <div className="flex flex-col gap-3">
-
                 {/* Call for Papers */}
                 <div className="border-2" style={{ borderColor: themeColor }}>
                   <div className="p-3" style={{ backgroundColor: orangeColor }}>
@@ -202,12 +144,75 @@ export default function HomePage() {
                     <hr className="border-black/20 my-3" />
 
                     <div className="font-bold text-black text-[13px] mb-0.5">Send Manuscripts to:</div>
-                    <div className="text-[11px] underline mb-2" style={{ color: themeColor }}>
+                    <div className="text-[11px] underline mb-2 break-all" style={{ color: themeColor }}>
                       ijespr@gmail.com<br />
                       ijeseditorinchief@gmail.com
                     </div>
                   </div>
                 </div>
+
+                {/* Indexing & Citation */}
+                <div className="border-2" style={{ borderColor: themeColor }}>
+                  {/* Header */}
+                  <div
+                    className="text-white font-bold text-[12px] px-2 py-1.5"
+                    style={{ backgroundColor: themeColor }}
+                  >
+                    Indexing &amp; Citation:
+                  </div>
+                  {/* Scrolling indexing logos */}
+                  <div
+                    className="overflow-hidden relative"
+                    style={{
+                      backgroundColor: orangeColor,
+                      height: s.indexingImages && s.indexingImages.length > 2 ? '300px' : '200px'
+                    }}
+                  >
+                    <div className="marquee-vertical w-full flex flex-col items-center gap-3 p-2 absolute">
+                      {s.indexingImages && s.indexingImages.length > 0 ? (
+                        s.indexingImages.map((img: string, idx: number) => (
+                          <div key={idx} className="bg-white p-2 w-full flex justify-center border border-gray-200">
+                            <img
+                              src={resolveUrl(img)}
+                              alt={`Indexing ${idx + 1}`}
+                              className="max-w-full h-auto object-contain"
+                              style={{ maxHeight: '55px' }}
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-white text-[11px] text-center p-3">No indexing images uploaded.</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+
+            {/* ──── CENTER CONTENT ──── */}
+            <td className="px-4 py-3 align-top border-l border-r border-gray-200">
+
+              {/* Welcome Section */}
+              <section className="mb-5">
+                <h1
+                  className="text-[22px] font-serif font-bold mb-3"
+                  style={{ color: '#000000' }}
+                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeTitle || 'Welcome to IJAIQT' }}
+                />
+                <div
+                  className="text-gray-800 text-justify leading-[1.7] text-[14px] [&_p]:!text-justify [&_div]:!text-justify [&_li]:!text-justify [&_span]:!text-justify [&_p]:mb-4 [&_div]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_li]:mb-2 [&_h1]:mb-4 [&_h2]:mb-4 [&_h3]:mb-4 [&>*:last-child]:mb-0"
+                  dangerouslySetInnerHTML={{ __html: s.homeWelcomeText || 'Welcome to our journal.' }}
+                />
+              </section>
+
+
+            </td>
+
+            {/* ──── RIGHT SIDEBAR ──── */}
+            <td className="p-2 align-top">
+              <div className="flex flex-col gap-3">
+
+
 
                 {/* Important Links */}
                 <div className="w-full" style={{ backgroundColor: themeColor }}>
@@ -218,12 +223,14 @@ export default function HomePage() {
                     { label: 'Instructions to Authors', href: '/authors' },
                     { label: 'Review Process', href: '/review-process' },
                     { label: 'Ethics of Journal', href: '/ethics' },
-                    { label: 'IJAIQT Paper Format', href: '/paper-format' },
-                    { label: 'IJAIQT Copyright Form', href: '/copyright-form' },
+                    { label: 'IJAIQT Paper Format', href: '/IJAIQT_Paper_Template_v2.docx', download: true },
+                    { label: 'IJAIQT Copyright Form', href: '/IJAIQT_Copyright_Transfer_Form.pdf', download: true },
                   ].map((link, idx) => (
                     <Link
                       key={idx}
                       href={link.href}
+                      target={link.download ? "_blank" : undefined}
+                      download={link.download ? true : undefined}
                       className="block px-3 py-1.5 text-white text-[12px] border-b border-white/15 hover:bg-white/10 transition-colors last:border-b-0"
                     >
                       {link.label}

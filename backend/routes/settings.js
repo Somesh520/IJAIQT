@@ -101,6 +101,7 @@ router.put('/',
         'editorialBoardHtml', 'callForPapersHtml',
         'authorsHtml', 'topicsHtml',
         'faqHtml', 'currentIssueHtml',
+        'reviewProcessHtml', 'ethicsHtml',
         'submissionDeadline', 'notificationOfAcceptance',
         'finalCameraReady', 'onlinePublication'
       ];

@@ -106,6 +106,14 @@ const siteSettingsSchema = new mongoose.Schema({
     type: String,
     default: '<h2>Current Issue</h2>'
   },
+  reviewProcessHtml: {
+    type: String,
+    default: '<h2>Peer-Review Process</h2>'
+  },
+  ethicsHtml: {
+    type: String,
+    default: '<h2>Publication Ethics and Research Integrity</h2>'
+  },
   footerText: {
     type: String,
     default: '© Copyright 2024 IJCSMS - All rights reserved. Use of this Web site signifies your agreement to the terms and conditions.'

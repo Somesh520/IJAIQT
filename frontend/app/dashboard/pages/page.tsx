@@ -27,6 +27,8 @@ export default function ManagePages() {
   const [topicsHtml, setTopicsHtml] = useState('')
   const [faqHtml, setFaqHtml] = useState('')
   const [currentIssueHtml, setCurrentIssueHtml] = useState('')
+  const [reviewProcessHtml, setReviewProcessHtml] = useState('')
+  const [ethicsHtml, setEthicsHtml] = useState('')
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -49,6 +51,8 @@ export default function ManagePages() {
         setTopicsHtml(d.topicsHtml || '')
         setFaqHtml(d.faqHtml || '')
         setCurrentIssueHtml(d.currentIssueHtml || '')
+        setReviewProcessHtml(d.reviewProcessHtml || '')
+        setEthicsHtml(d.ethicsHtml || '')
       }
     } catch (err: any) {
       console.error(err)
@@ -73,6 +77,8 @@ export default function ManagePages() {
       formData.append('topicsHtml', topicsHtml)
       formData.append('faqHtml', faqHtml)
       formData.append('currentIssueHtml', currentIssueHtml)
+      formData.append('reviewProcessHtml', reviewProcessHtml)
+      formData.append('ethicsHtml', ethicsHtml)
 
       await settingsAPI.update(formData)
       setSuccess('Pages updated successfully!')
@@ -114,7 +120,7 @@ export default function ManagePages() {
   }
 
   const switchTab = (tab: string) => {
-    const tabs = ['editorial', 'cfp', 'authors', 'topics', 'faq', 'current_issue'];
+    const tabs = ['editorial', 'cfp', 'authors', 'topics', 'faq', 'current_issue', 'review_process', 'ethics'];
     tabs.forEach(t => {
       const el = document.getElementById(`tab-content-${t}`);
       const btn = document.getElementById(`tab-btn-${t}`);
@@ -165,7 +171,7 @@ export default function ManagePages() {
             
             <div className="border-b border-slate-200 mb-6">
               <nav className="-mb-px flex space-x-4 overflow-x-auto">
-                {['editorial', 'cfp', 'authors', 'topics', 'faq', 'current_issue'].map((tab) => (
+                {['editorial', 'cfp', 'authors', 'topics', 'faq', 'current_issue', 'review_process', 'ethics'].map((tab) => (
                   <button
                     key={tab}
                     type="button"
@@ -179,6 +185,8 @@ export default function ManagePages() {
                     {tab === 'topics' && 'Topics'}
                     {tab === 'faq' && 'FAQs'}
                     {tab === 'current_issue' && 'Current Issue'}
+                    {tab === 'review_process' && 'Review Process'}
+                    {tab === 'ethics' && 'Ethics'}
                   </button>
                 ))}
               </nav>
@@ -248,6 +256,28 @@ export default function ManagePages() {
                     value={currentIssueHtml}
                     config={config}
                     onBlur={newContent => setCurrentIssueHtml(newContent)}
+                  />
+                </div>
+              </div>
+
+              <div id="tab-content-review_process" style={{ display: 'none' }}>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Review Process Page</label>
+                <div className="bg-white">
+                  <JoditEditor
+                    value={reviewProcessHtml}
+                    config={config}
+                    onBlur={newContent => setReviewProcessHtml(newContent)}
+                  />
+                </div>
+              </div>
+
+              <div id="tab-content-ethics" style={{ display: 'none' }}>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Ethics Page</label>
+                <div className="bg-white">
+                  <JoditEditor
+                    value={ethicsHtml}
+                    config={config}
+                    onBlur={newContent => setEthicsHtml(newContent)}
                   />
                 </div>
               </div>
