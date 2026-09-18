@@ -136,8 +136,8 @@ export default function HomePage() {
 
                 <hr className="border-black/20 my-3" />
 
-                <div className="font-bold text-black text-[13px] mb-0.5">Send Manuscripts to:</div>
-                <div className="text-[11px] underline mb-2 break-all" style={{ color: themeColor }}>
+                <div className="font-bold text-black text-[13px] mb-0.5 text-center">Send Manuscripts to:</div>
+                <div className="text-[11px] underline mb-2 break-all text-center" style={{ color: themeColor }}>
                   ijaiqt@kiet.edu<br />
 
                 </div>
