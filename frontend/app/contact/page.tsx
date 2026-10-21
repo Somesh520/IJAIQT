@@ -30,8 +30,12 @@ export default function ContactPage() {
 
             <div className="space-y-1">
               <p className="font-bold">Mr. Sarvesh Maurya</p>
-              <p>Assistant Professor, Department of CSE (AI &amp; ML)</p>
-              <p>KIET (Deemed to be University), Delhi-NCR, Ghaziabad, India</p>
+              <p>Assistant Professor, Department of CSE (AI & ML)</p>
+              <p>KIET (Deemed to be University), Delhi-NCR,
+                Ghaziabad-Meerut Road, Ghaziabad,
+                Uttar Pradesh-201206, India
+
+              </p>
               <p className="pt-2">
                 <strong>Email: </strong>
                 <a href="mailto:info.ijaiqt@kiet.edu" className="hover:underline">
@@ -53,13 +57,16 @@ export default function ContactPage() {
             <div className="space-y-1">
               <p className="font-bold">Prof. (Dr.) Puneet Garg</p>
               <p>Department of CSE (AI)</p>
-              <p>KIET (Deemed to be University), Delhi-NCR, Ghaziabad, India</p>
+              <p>KIET (Deemed to be University), Delhi-NCR,
+                Ghaziabad-Meerut Road, Ghaziabad,
+                Uttar Pradesh-201206, India
+              </p>
               <p className="pt-2">
                 <strong>Email: </strong>
                 <a href="mailto:editor.ijaiqt@kiet.edu" className="hover:underline">
                   editor.ijaiqt@kiet.edu
                 </a>
-                ,a
+
               </p>
             </div>
           </div>
