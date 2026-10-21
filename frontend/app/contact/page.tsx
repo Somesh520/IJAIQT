@@ -1,11 +1,7 @@
 export default function ContactPage() {
   return (
     <main className="w-full bg-white min-h-[600px] px-4 py-8 md:px-8 font-serif">
-      <div className="max-w-3xl mx-auto bg-white text-black text-[16px] leading-relaxed">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#000044] mb-10 text-center border-b-2 border-orange-500 pb-4 flex justify-center">
-          Contacts
-        </h1>
-
+      <div className="max-w-3xl mx-auto bg-white text-black text-[16px] leading-relaxed pt-2">
         <div className="space-y-8">
           {/* Submission & Inquiries */}
           <div>
@@ -31,7 +27,7 @@ export default function ContactPage() {
             <p className="mb-4">
               For any questions regarding submitted manuscripts or paper status, please contact the Assistant Editor:
             </p>
-            
+
             <div className="space-y-1">
               <p className="font-bold">Mr. Sarvesh Maurya</p>
               <p>Assistant Professor, Department of CSE (AI &amp; ML)</p>
@@ -41,6 +37,29 @@ export default function ContactPage() {
                 <a href="mailto:info.ijaiqt@kiet.edu" className="hover:underline">
                   info.ijaiqt@kiet.edu
                 </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Grievances & Escalations */}
+          <div className="pt-2">
+            <h2 className="text-xl md:text-2xl font-bold text-center text-black mb-4">
+              Grievances &amp; Escalations
+            </h2>
+            <p className="mb-4">
+              For formal grievances or major editorial concerns, authors may reach out to:
+            </p>
+
+            <div className="space-y-1">
+              <p className="font-bold">Prof. (Dr.) Puneet Garg</p>
+              <p>Department of CSE (AI)</p>
+              <p>KIET (Deemed to be University), Delhi-NCR, Ghaziabad, India</p>
+              <p className="pt-2">
+                <strong>Email: </strong>
+                <a href="mailto:editor.ijaiqt@kiet.edu" className="hover:underline">
+                  editor.ijaiqt@kiet.edu
+                </a>
+                ,a
               </p>
             </div>
           </div>
