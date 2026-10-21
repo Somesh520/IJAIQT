@@ -46,6 +46,7 @@ export default function Navbar() {
     { name: 'Current Issue', path: '/current-issue' },
     { name: 'Archive', path: '/archive' },
     { name: 'Topics Covered', path: '/topics' },
+    { name: 'Contacts', path: '/contact' },
     { name: 'FAQs', path: '/faq' },
   ]
 

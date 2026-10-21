@@ -1,101 +1,50 @@
-'use client'
-
-import { useState } from 'react'
-import { contactAPI } from '@/lib/api'
-
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
-  const [status, setStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error', msg: string }>({ type: 'idle', msg: '' })
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus({ type: 'loading', msg: 'Submitting your message...' })
-    
-    try {
-      await contactAPI.submit(formData)
-      setStatus({ type: 'success', msg: 'Your message has been sent successfully. We will get back to you soon.' })
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (error) {
-      setStatus({ type: 'error', msg: 'Failed to send message. Please try again later.' })
-    }
-  }
-
   return (
-    <main className="w-full max-w-[1024px] border-x border-b border-gray-300 min-h-[500px] p-6 bg-white flex justify-center">
-      <div className="w-full max-w-2xl">
-        <div className="mb-6 border-b border-dashed border-gray-300 pb-2">
-          <h2 className="text-2xl font-bold text-[#800000] italic">Contact Us</h2>
+    <main className="w-full bg-white min-h-[600px] px-4 py-8 md:px-8 font-serif">
+      <div className="max-w-3xl mx-auto bg-white text-black text-[16px] leading-relaxed">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#000044] mb-10 text-center border-b-2 border-orange-500 pb-4 flex justify-center">
+          Contacts
+        </h1>
+
+        <div className="space-y-8">
+          {/* Submission & Inquiries */}
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-center text-black mb-4">
+              Submission &amp; Inquiries
+            </h2>
+            <p className="mb-3">
+              Authors are invited to submit their original research work for the upcoming issue via email:
+            </p>
+            <p>
+              <strong>Submission Email: </strong>
+              <a href="mailto:ijaiqt@kiet.edu" className="hover:underline">
+                ijaiqt@kiet.edu
+              </a>
+            </p>
+          </div>
+
+          {/* General Queries & Editorial Support */}
+          <div className="pt-2">
+            <h2 className="text-xl md:text-2xl font-bold text-center text-black mb-4">
+              General Queries &amp; Editorial Support
+            </h2>
+            <p className="mb-4">
+              For any questions regarding submitted manuscripts or paper status, please contact the Assistant Editor:
+            </p>
+            
+            <div className="space-y-1">
+              <p className="font-bold">Mr. Sarvesh Maurya</p>
+              <p>Assistant Professor, Department of CSE (AI &amp; ML)</p>
+              <p>KIET (Deemed to be University), Delhi-NCR, Ghaziabad, India</p>
+              <p className="pt-2">
+                <strong>Email: </strong>
+                <a href="mailto:info.ijaiqt@kiet.edu" className="hover:underline">
+                  info.ijaiqt@kiet.edu
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
-
-        <p className="mb-6 text-sm leading-relaxed text-gray-800">
-          If you have any questions regarding the submission process, editorial guidelines, or general inquiries, please fill out the form below or email us directly at <strong className="text-[#800000]">editor@ijcr.com</strong>.
-        </p>
-
-        {status.type === 'success' && (
-          <div className="bg-green-50 border border-green-200 text-green-800 p-4 mb-6 font-semibold text-sm">
-            {status.msg}
-          </div>
-        )}
-
-        {status.type === 'error' && (
-          <div className="bg-red-50 border border-red-200 text-red-800 p-4 mb-6 font-semibold text-sm">
-            {status.msg}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="border border-gray-300 bg-gray-50 p-6">
-          <div className="mb-4">
-            <label className="block text-sm font-bold text-[#800000] mb-2">Name</label>
-            <input 
-              type="text" 
-              required
-              className="w-full border border-gray-300 p-2 text-sm focus:outline-none focus:border-[#800000]"
-              value={formData.name}
-              onChange={e => setFormData({...formData, name: e.target.value})}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-bold text-[#800000] mb-2">Email</label>
-            <input 
-              type="email" 
-              required
-              className="w-full border border-gray-300 p-2 text-sm focus:outline-none focus:border-[#800000]"
-              value={formData.email}
-              onChange={e => setFormData({...formData, email: e.target.value})}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-bold text-[#800000] mb-2">Subject</label>
-            <input 
-              type="text" 
-              required
-              className="w-full border border-gray-300 p-2 text-sm focus:outline-none focus:border-[#800000]"
-              value={formData.subject}
-              onChange={e => setFormData({...formData, subject: e.target.value})}
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-bold text-[#800000] mb-2">Message</label>
-            <textarea 
-              required
-              rows={5}
-              className="w-full border border-gray-300 p-2 text-sm focus:outline-none focus:border-[#800000]"
-              value={formData.message}
-              onChange={e => setFormData({...formData, message: e.target.value})}
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            disabled={status.type === 'loading'}
-            className="bg-[#800000] text-white font-bold py-2 px-6 hover:bg-[#a00000] transition-colors disabled:opacity-50"
-          >
-            {status.type === 'loading' ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
       </div>
     </main>
   )

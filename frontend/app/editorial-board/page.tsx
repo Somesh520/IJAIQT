@@ -35,7 +35,11 @@ export default function EditorialBoardPage() {
         </h1>
         {htmlContent ? (
           <div 
-            className="prose max-w-none prose-slate"
+            className="prose max-w-none font-serif text-[16px] text-slate-800 leading-relaxed
+              [&_p]:my-3.5 [&_p]:leading-relaxed
+              [&_*]:!font-serif [&_span]:!text-[16px] [&_span]:!text-slate-800 [&_span]:!bg-transparent
+              [&_strong]:!text-[#000044] [&_strong]:!font-bold [&_strong]:!text-[17px] [&_strong]:inline-block [&_strong]:mt-1.5
+              [&_p:empty]:hidden"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
         ) : (
