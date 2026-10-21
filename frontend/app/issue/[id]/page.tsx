@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { AnimatedLink } from '@/components/ui/animated-link'
 import { Loader2 } from 'lucide-react'
 
+
+
 export default function IssueDetailsPage() {
   const { id } = useParams()
   const [issue, setIssue] = useState<any>(null)
@@ -88,6 +90,7 @@ export default function IssueDetailsPage() {
                         <h3 className="font-serif font-bold text-black text-lg mb-2 leading-snug">
                           {paper.title}
                         </h3>
+
 
                         <p className="font-serif text-slate-700 text-[15px] mb-3">
                           {paper.authors?.map((a: any) => a.name).join(', ')}

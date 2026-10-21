@@ -80,15 +80,9 @@ export default function ArchivePage() {
                         >
                           Volume {issue.volume}, Issue {issue.issue}
                         </Link>
-                        {issue.isCurrent && (
-                          <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                            Current Issue
-                          </span>
-                        )}
+
                       </div>
-                      <p className="text-[15px] text-slate-700">
-                        {issue.description || 'General Publication Issue'}
-                      </p>
+
                       <div className="pt-1">
                         <Link
                           href={`/issue/${issue._id}`}
