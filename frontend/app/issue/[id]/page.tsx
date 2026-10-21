@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation'
 import { issuesAPI, papersAPI } from '@/lib/api'
 import Link from 'next/link'
 import { AnimatedLink } from '@/components/ui/animated-link'
-import { Calendar } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
 export default function IssueDetailsPage() {
   const { id } = useParams()
@@ -32,10 +32,10 @@ export default function IssueDetailsPage() {
 
   if (error) {
     return (
-      <div className="min-h-[60vh] flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold mb-4 font-serif text-slate-900">Issue Not Found</h1>
-        <p className="text-slate-600 mb-6">The requested issue could not be found or does not exist.</p>
-        <Link href="/archive" className="bg-brand-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-700 transition-colors">
+      <div className="min-h-[60vh] flex flex-col justify-center items-center font-serif">
+        <h1 className="text-2xl font-bold mb-3 text-slate-900">Issue Not Found</h1>
+        <p className="text-slate-600 mb-6 text-sm">The requested issue could not be found or does not exist.</p>
+        <Link href="/archive" className="bg-[#000044] text-white px-6 py-2 rounded font-medium hover:bg-[#1a1a66] transition-colors text-sm">
           Return to Archive
         </Link>
       </div>
@@ -43,54 +43,33 @@ export default function IssueDetailsPage() {
   }
 
   return (
-    <main className="w-full flex-1 bg-slate-50 min-h-screen pb-20">
-      {/* Title Header */}
-      <div className="w-full border-b border-slate-200 bg-white py-16 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-50/50 via-transparent to-transparent pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-900 tracking-tight mb-4">
-            Issue Details
-          </h1>
-          {issue && (
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto flex items-center justify-center gap-2">
-              <Calendar className="w-5 h-5 text-brand-600" />
-              Volume {issue.volume}, Issue {issue.issue} &mdash; {issue.month} {issue.year}
-            </p>
-          )}
-          {issue?.description && (
-            <p className="mt-4 text-slate-500 max-w-2xl mx-auto italic">
-              {issue.description}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 mt-12">
+    <main className="w-full bg-white min-h-[600px] px-2 py-8 md:px-6 font-serif">
+      <div className="max-w-4xl mx-auto bg-white p-4 md:p-6 text-slate-800 leading-relaxed pt-2">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-            <div className="w-8 h-8 border-4 border-brand-200 border-t-brand-600 rounded-full animate-spin mb-4"></div>
+            <Loader2 className="animate-spin h-8 w-8 text-gray-400 mb-4" />
             Loading issue details...
           </div>
         ) : !issue ? (
-          <div className="text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm text-slate-500">
+          <div className="text-center py-16 bg-white rounded-lg border border-slate-200 text-slate-500">
             No issue details available.
           </div>
         ) : (
           <div className="space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-8">
-              <h2 className="text-2xl font-serif font-bold text-slate-900">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+              <h2 className="text-xl md:text-2xl font-serif font-bold text-[#000044]">
                 Published Papers
               </h2>
-              <span className="bg-brand-100 text-brand-800 text-sm font-bold px-3 py-1 rounded-full">
+              <span className="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 {papers.length} {papers.length === 1 ? 'Paper' : 'Papers'}
               </span>
             </div>
 
             <div className="w-full bg-white border border-slate-300 shadow-sm">
               {/* Table Header */}
-              <div className="grid grid-cols-[100px_1fr] bg-[#fdb777] border-b border-slate-300">
-                <div className="p-3 font-serif font-bold text-black border-r border-slate-300">Paper #</div>
-                <div className="p-3 font-serif font-bold text-black">Paper Title/ Authors</div>
+              <div className="grid grid-cols-[100px_1fr] bg-[#fcb474] border-b border-slate-300">
+                <div className="p-3 font-serif font-bold text-black border-r border-slate-300 text-center">Paper #</div>
+                <div className="p-3 font-serif font-bold text-black">Paper Title / Authors</div>
               </div>
 
               {/* Table Body */}
@@ -102,30 +81,30 @@ export default function IssueDetailsPage() {
                 ) : (
                   papers.map((paper, index) => (
                     <div key={paper._id} className="grid grid-cols-[100px_1fr]">
-                      <div className="p-4 font-serif text-lg text-black border-r border-slate-300">
+                      <div className="p-4 font-serif text-lg text-black border-r border-slate-300 text-center font-bold">
                         {index + 1}
                       </div>
                       <div className="p-4">
-                        <h3 className="font-serif font-bold text-black text-lg mb-4 leading-snug">
+                        <h3 className="font-serif font-bold text-black text-lg mb-2 leading-snug">
                           {paper.title}
                         </h3>
                         
-                        <p className="font-serif text-black text-[17px] mb-4">
+                        <p className="font-serif text-slate-700 text-[15px] mb-3">
                           {paper.authors?.map((a: any) => a.name).join(', ')}
                         </p>
                         
                         <div className="flex items-center gap-2 font-serif text-[15px]">
                           <AnimatedLink 
                             href={`/paper/${paper._id}`}
-                            className="text-[#3b00ff]"
+                            className="text-[#3b00ff] hover:underline"
                           >
                             Abstract
                           </AnimatedLink>
-                          <span className="text-black mx-2">|</span>
+                          <span className="text-slate-400 mx-2">|</span>
                           <AnimatedLink
                             href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://ijaiqt.onrender.com'}${paper.pdfUrl}`}
                             target="_blank"
-                            className="text-[#3b00ff]"
+                            className="text-[#3b00ff] hover:underline"
                           >
                             <span className="flex items-center gap-2">
                               <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF" className="w-5 h-5" />
