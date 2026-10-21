@@ -67,9 +67,9 @@ export default function IssueDetailsPage() {
 
             <div className="w-full bg-white border border-slate-300 shadow-sm">
               {/* Table Header */}
-              <div className="grid grid-cols-[100px_1fr] bg-[#fcb474] border-b border-slate-300">
-                <div className="p-3 font-serif font-bold text-black border-r border-slate-300 text-center">Paper #</div>
-                <div className="p-3 font-serif font-bold text-black">Paper Title / Authors</div>
+              <div className="grid grid-cols-[100px_1fr] bg-[#2B4E9B] border-b border-slate-300">
+                <div className="p-3 font-serif font-bold text-white border-r border-slate-300 text-center">Paper #</div>
+                <div className="p-3 font-serif font-bold text-white">Paper Title / Authors</div>
               </div>
 
               {/* Table Body */}
@@ -88,13 +88,13 @@ export default function IssueDetailsPage() {
                         <h3 className="font-serif font-bold text-black text-lg mb-2 leading-snug">
                           {paper.title}
                         </h3>
-                        
+
                         <p className="font-serif text-slate-700 text-[15px] mb-3">
                           {paper.authors?.map((a: any) => a.name).join(', ')}
                         </p>
-                        
+
                         <div className="flex items-center gap-2 font-serif text-[15px]">
-                          <AnimatedLink 
+                          <AnimatedLink
                             href={`/paper/${paper._id}`}
                             className="text-[#3b00ff] hover:underline"
                           >

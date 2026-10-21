@@ -50,7 +50,7 @@ export default function ArchivePage() {
             <p className="text-slate-600 max-w-xl mx-auto mb-4 text-[15px]">
               Archived volumes and issues will appear here as publication cycles complete.
             </p>
-            <Link 
+            <Link
               href="/current-issue"
               className="inline-block bg-[#000044] text-white font-bold py-2 px-6 rounded hover:bg-[#1a1a66] transition-colors text-sm"
             >
@@ -61,8 +61,8 @@ export default function ArchivePage() {
           <div className="overflow-x-auto border border-gray-300 shadow-sm mt-6">
             <table className="w-full border-collapse text-left">
               <thead>
-                <tr className="bg-[#fcb474] text-black border-b border-gray-300">
-                  <th className="p-3.5 border-r border-gray-300 w-44 md:w-52 font-bold text-[16px]">Date</th>
+                <tr className="bg-[#2B4E9B] text-white border-b border-gray-300">
+                  <th className="p-3.5 border-r border-gray-300 w-44 md:w-52 font-bold text-[16px]">Issue</th>
                   <th className="p-3.5 font-bold text-[16px]">Issue Details</th>
                 </tr>
               </thead>
@@ -74,7 +74,7 @@ export default function ArchivePage() {
                     </td>
                     <td className="p-4 align-top space-y-2">
                       <div className="flex items-center gap-2.5 flex-wrap">
-                        <Link 
+                        <Link
                           href={`/issue/${issue._id}`}
                           className="font-bold text-lg text-blue-800 hover:underline"
                         >
@@ -90,7 +90,7 @@ export default function ArchivePage() {
                         {issue.description || 'General Publication Issue'}
                       </p>
                       <div className="pt-1">
-                        <Link 
+                        <Link
                           href={`/issue/${issue._id}`}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900 hover:underline"
                         >

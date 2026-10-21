@@ -102,12 +102,9 @@ export default function CurrentIssuePage() {
   return (
     <main className="w-full bg-white min-h-[600px] px-2 py-8 md:px-6 font-serif">
       <div className="max-w-5xl mx-auto bg-white p-4 md:p-6 text-slate-800 leading-relaxed">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#000044] mb-8 text-center border-b-2 border-orange-500 pb-4 inline-block mx-auto flex justify-center">
-          Current Issue
-        </h1>
 
         {customHtml && (
-          <div 
+          <div
             className="mb-8 prose max-w-none text-slate-800"
             dangerouslySetInnerHTML={{ __html: customHtml }}
           />
@@ -120,22 +117,15 @@ export default function CurrentIssuePage() {
                 <h2 className="text-xl md:text-2xl font-bold text-[#000044]">
                   Volume {issue.volume}, Issue {issue.issue} ({issue.month} {issue.year})
                 </h2>
-                {issue.description && (
-                  <p className="text-slate-600 text-sm mt-1 italic">
-                    {issue.description}
-                  </p>
-                )}
               </div>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-800 w-fit">
-                Current Publication
-              </span>
+
             </div>
 
             {papers.length > 0 ? (
               <div className="overflow-x-auto border border-gray-300 shadow-sm">
                 <table className="w-full border-collapse text-left">
                   <thead>
-                    <tr className="bg-[#fcb474] text-black border-b border-gray-300">
+                    <tr className="bg-[#2B4E9B] text-white border-b border-gray-300">
                       <th className="p-3 border-r border-gray-300 w-24 font-bold text-[16px] text-center">Paper #</th>
                       <th className="p-3 font-bold text-[16px]">Paper Title / Authors</th>
                     </tr>
@@ -154,17 +144,17 @@ export default function CurrentIssuePage() {
                             {paper.authors?.map(a => a.name).join(', ')}
                           </p>
                           <div className="flex items-center gap-3 text-sm pt-1">
-                            <Link 
-                              href={`/paper/${paper._id}`} 
+                            <Link
+                              href={`/paper/${paper._id}`}
                               className="text-blue-800 font-semibold hover:underline"
                             >
                               Abstract
                             </Link>
                             <span className="text-gray-400">|</span>
                             {paper.pdfUrl ? (
-                              <a 
-                                href={resolvePdfUrl(paper.pdfUrl)} 
-                                target="_blank" 
+                              <a
+                                href={resolvePdfUrl(paper.pdfUrl)}
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 text-red-700 font-semibold hover:underline"
                               >
@@ -191,13 +181,13 @@ export default function CurrentIssuePage() {
                   Manuscripts for this upcoming issue are currently under review and editorial preparation. Published research articles will be listed here upon completion.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  <Link 
+                  <Link
                     href="/call-for-papers"
                     className="inline-block bg-[#000044] text-white font-bold py-2.5 px-6 rounded hover:bg-[#1a1a66] transition-colors text-sm"
                   >
                     View Call for Papers
                   </Link>
-                  <Link 
+                  <Link
                     href="/authors"
                     className="inline-block bg-white text-[#000044] border border-[#000044] font-bold py-2.5 px-6 rounded hover:bg-slate-50 transition-colors text-sm"
                   >
@@ -216,7 +206,7 @@ export default function CurrentIssuePage() {
             <p className="text-slate-600 max-w-xl mx-auto mb-4 text-[15px]">
               The initial issue of the International Journal of Artificial Intelligence and Quantum Technologies (IJAIQT) is in progress. Submissions are welcome.
             </p>
-            <Link 
+            <Link
               href="/call-for-papers"
               className="inline-block bg-[#000044] text-white font-bold py-2 px-6 rounded hover:bg-[#1a1a66] transition-colors text-sm"
             >
