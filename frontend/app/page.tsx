@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { settingsAPI } from '@/lib/api'
-import { Loader2 } from 'lucide-react'
+import { Loader2, ExternalLink } from 'lucide-react'
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true)
@@ -230,6 +230,47 @@ export default function HomePage() {
                   {link.label}
                 </Link>
               ))}
+            </div>
+
+            {/* Explore KIET University */}
+            <div className="border-2 bg-white flex flex-col" style={{ borderColor: themeColor }}>
+              <a
+                href="https://kiet.edu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 text-center flex items-center justify-center gap-1.5 hover:opacity-95 transition-opacity"
+                style={{ backgroundColor: themeColor }}
+              >
+                <span className="font-bold text-white text-[14px]  leading-tight" >
+                  Explore KIET University
+                </span>
+                <ExternalLink className="w-3.5 h-3.5 text-white" />
+              </a>
+              <div className="p-2.5 flex flex-col items-center">
+                <a
+                  href="https://kiet.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full transition-transform duration-200 hover:scale-[1.02]"
+                  title="Visit KIET (Deemed to be University)"
+                >
+                  <img
+                    src="/KIET-Logo.webp"
+                    alt="KIET (Deemed to be University)"
+                    className="w-full h-auto object-contain"
+                  />
+                </a>
+                <a
+                  href="https://kiet.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2.5 w-full py-1.5 px-2 text-center text-white text-[12px] font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:opacity-90 shadow-sm"
+                  style={{ backgroundColor: 'blue' }}
+                >
+                  <span>Visit kiet.edu</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
 
             {/* Side Banner / Poster */}
