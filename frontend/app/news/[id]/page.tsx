@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { settingsAPI } from '@/lib/api'
-import { Loader2 } from 'lucide-react'
+
 
 export default function NewsDetailPage() {
   const params = useParams()
@@ -37,9 +37,19 @@ export default function NewsDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64 bg-white w-full">
-        <Loader2 className="animate-spin h-8 w-8 text-gray-400" />
-      </div>
+      <main className="w-full bg-white min-h-[600px] px-2 py-4 md:px-6">
+        <div className="max-w-5xl mx-auto border border-gray-300 min-h-[500px] bg-white animate-pulse">
+          <div className="w-full h-11 bg-orange-200 border-b border-gray-300" />
+          <div className="p-6 space-y-4">
+            <div className="h-4 bg-slate-300 rounded w-28 mb-4" />
+            <div className="space-y-2.5">
+              <div className="h-4 bg-slate-200 rounded w-full" />
+              <div className="h-4 bg-slate-200 rounded w-full" />
+              <div className="h-4 bg-slate-200 rounded w-4/5" />
+            </div>
+          </div>
+        </div>
+      </main>
     )
   }
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { settingsAPI } from '@/lib/api'
-import { Loader2 } from 'lucide-react'
+import { ContentPageSkeleton } from '@/components/ui/skeleton'
 
 function sanitizeEditorialHtml(rawHtml: string): string {
   if (!rawHtml) return ''
@@ -54,11 +54,7 @@ export default function EditorialBoardPage() {
   }, [])
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64 bg-white w-full">
-        <Loader2 className="animate-spin h-8 w-8 text-gray-400" />
-      </div>
-    )
+    return <ContentPageSkeleton />
   }
 
   return (

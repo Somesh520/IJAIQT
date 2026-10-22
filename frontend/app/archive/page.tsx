@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { issuesAPI } from '@/lib/api'
 import Link from 'next/link'
-import { Loader2, Archive, ArrowRight } from 'lucide-react'
+import { Archive, ArrowRight } from 'lucide-react'
 
 interface Issue {
   _id: string
@@ -33,9 +33,20 @@ export default function ArchivePage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64 bg-white w-full">
-        <Loader2 className="animate-spin h-8 w-8 text-gray-400" />
-      </div>
+      <main className="w-full bg-white min-h-[600px] px-2 py-8 md:px-6 font-serif">
+        <div className="max-w-5xl mx-auto bg-white p-4 md:p-6 text-slate-800 leading-relaxed pt-2 animate-pulse">
+          <div className="h-8 bg-slate-300 rounded w-48 mb-6" />
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="border border-slate-200 rounded-lg p-5 bg-slate-50 space-y-3">
+                <div className="h-5 bg-slate-300 rounded w-1/3" />
+                <div className="h-3.5 bg-slate-200 rounded w-2/3" />
+                <div className="h-3.5 bg-slate-200 rounded w-1/2" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
     )
   }
 

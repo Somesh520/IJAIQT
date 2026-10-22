@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { issuesAPI, papersAPI, settingsAPI } from '@/lib/api'
-import { Loader2, BookOpen } from 'lucide-react'
+import { BookOpen } from 'lucide-react'
+import { IssueListSkeleton } from '@/components/ui/skeleton'
 import Link from 'next/link'
 
 interface Author {
@@ -92,11 +93,7 @@ export default function CurrentIssuePage() {
   }
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64 bg-white w-full">
-        <Loader2 className="animate-spin h-8 w-8 text-gray-400" />
-      </div>
-    )
+    return <IssueListSkeleton />
   }
 
   return (

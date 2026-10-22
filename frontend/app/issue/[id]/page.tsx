@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation'
 import { issuesAPI, papersAPI } from '@/lib/api'
 import Link from 'next/link'
 import { AnimatedLink } from '@/components/ui/animated-link'
-import { Loader2 } from 'lucide-react'
+
 
 
 
@@ -48,9 +48,18 @@ export default function IssueDetailsPage() {
     <main className="w-full bg-white min-h-[600px] px-2 py-8 md:px-6 font-serif">
       <div className="max-w-4xl mx-auto bg-white p-4 md:p-6 text-slate-800 leading-relaxed pt-2">
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-            <Loader2 className="animate-spin h-8 w-8 text-gray-400 mb-4" />
-            Loading issue details...
+          <div className="space-y-6 animate-pulse">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+              <div className="h-6 bg-slate-300 rounded w-44" />
+              <div className="h-6 bg-slate-200 rounded-full w-20" />
+            </div>
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="border border-slate-200 p-5 space-y-3 bg-slate-50">
+                <div className="h-5 bg-slate-300 rounded w-3/4" />
+                <div className="h-4 bg-slate-200 rounded w-1/3" />
+                <div className="h-4 bg-slate-200 rounded w-full" />
+              </div>
+            ))}
           </div>
         ) : !issue ? (
           <div className="text-center py-16 bg-white rounded-lg border border-slate-200 text-slate-500">

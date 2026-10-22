@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { conferencesAPI } from '@/lib/api'
-import { Loader2 } from 'lucide-react'
+
 
 export default function ConferencesPage() {
   const [conferences, setConferences] = useState<any[]>([])
@@ -23,8 +23,13 @@ export default function ConferencesPage() {
         </h1>
 
         {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <Loader2 className="animate-spin h-8 w-8 text-brand-600" />
+          <div className="space-y-6 animate-pulse">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-slate-50 p-6 border border-slate-200 space-y-3">
+                <div className="h-5 bg-slate-300 rounded w-3/4" />
+                <div className="h-4 bg-slate-200 rounded w-1/3" />
+              </div>
+            ))}
           </div>
         ) : conferences.length === 0 ? (
           <div className="bg-slate-50 border border-slate-200 p-8 text-center text-slate-500 rounded-xl font-sans">

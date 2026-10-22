@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation'
 import { papersAPI } from '@/lib/api'
 import Link from 'next/link'
 import { AnimatedLink } from '@/components/ui/animated-link'
-import { Loader2 } from 'lucide-react'
+
 
 export default function PaperAbstractDetailsPage() {
   const { id } = useParams()
@@ -24,9 +24,23 @@ export default function PaperAbstractDetailsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-[60vh] flex justify-center items-center">
-        <Loader2 className="animate-spin h-10 w-10 text-slate-400" />
-      </div>
+      <main className="w-full bg-white min-h-screen pt-12 pb-24 px-6 font-serif">
+        <div className="max-w-5xl mx-auto animate-pulse">
+          <div className="h-4 bg-slate-200 rounded w-16 mb-6" />
+          <div className="h-8 bg-slate-300 rounded w-48 mb-6" />
+          <div className="w-full border-t border-b border-slate-300 divide-y divide-slate-200">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="flex p-4 gap-4">
+                <div className="w-44 h-5 bg-slate-300 rounded shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-5 bg-slate-200 rounded w-full" />
+                  <div className="h-5 bg-slate-200 rounded w-2/3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
     )
   }
 
